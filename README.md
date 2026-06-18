@@ -33,4 +33,4 @@ impacte defensiu bidireccional i avantatge de pista integrat.
 
 ## Autor
 
-Marc [Cognom] - TFG, UAB 2026
+Marc Vega Velilla - TFG, UAB 2026
