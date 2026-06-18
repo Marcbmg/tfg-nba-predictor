@@ -1,0 +1,109 @@
+======================================================================
+INFORME DE QUINTETS NBA
+======================================================================
+
+Temporada: 2025-26
+Total quintets: 2594
+Total equips: 30
+
+Estadístiques generals:
+  Mitjana minuts per quintet: 27.1
+  Màxim minuts: 709.7
+  Mínim minuts: 10.0
+
+Quintets per equip:
+  Washington Wizards            : 101 quintets
+  Cleveland Cavaliers           : 101 quintets
+  Brooklyn Nets                 : 99 quintets
+  Denver Nuggets                : 96 quintets
+  Milwaukee Bucks               : 94 quintets
+  Boston Celtics                : 93 quintets
+  New Orleans Pelicans          : 93 quintets
+  Phoenix Suns                  : 92 quintets
+  Miami Heat                    : 91 quintets
+  Dallas Mavericks              : 89 quintets
+  Philadelphia 76ers            : 89 quintets
+  Memphis Grizzlies             : 88 quintets
+  Oklahoma City Thunder         : 87 quintets
+  Utah Jazz                     : 86 quintets
+  Toronto Raptors               : 86 quintets
+  Atlanta Hawks                 : 85 quintets
+  Minnesota Timberwolves        : 84 quintets
+  Charlotte Hornets             : 82 quintets
+  Los Angeles Lakers            : 82 quintets
+  Detroit Pistons               : 82 quintets
+  Portland Trail Blazers        : 82 quintets
+  Houston Rockets               : 82 quintets
+  Orlando Magic                 : 82 quintets
+  Golden State Warriors         : 81 quintets
+  Sacramento Kings              : 80 quintets
+  Los Angeles Clippers          : 79 quintets
+  Indiana Pacers                : 79 quintets
+  San Antonio Spurs             : 78 quintets
+  Chicago Bulls                 : 76 quintets
+  New York Knicks               : 75 quintets
+
+======================================================================
+TOP 10 QUINTETS PER MINUTS
+======================================================================
+
+ 1. Minnesota Timberwolves
+    Jugadors: R. Gobert - J. Randle - D. DiVincenzo - A. Edwards - J. McDaniels
+    Minuts: 709.7
+    Net Rating: +0.0
+    Partits: 54
+
+ 2. New York Knicks
+    Jugadors: K. Towns - O. Anunoby - J. Hart - M. Bridges - J. Brunson
+    Minuts: 540.6
+    Net Rating: +0.0
+    Partits: 43
+
+ 3. Detroit Pistons
+    Jugadors: T. Harris - D. Robinson - C. Cunningham - J. Duren - A. Thompson
+    Minuts: 536.4
+    Net Rating: +0.0
+    Partits: 42
+
+ 4. Charlotte Hornets
+    Jugadors: M. Bridges - L. Ball - M. Diabaté - B. Miller - K. Knueppel
+    Minuts: 509.2
+    Net Rating: +0.0
+    Partits: 49
+
+ 5. Atlanta Hawks
+    Jugadors: C. McCollum - N. Alexander-Walker - O. Okongwu - J. Johnson - D. Daniels
+    Minuts: 390.6
+    Net Rating: +0.0
+    Partits: 30
+
+ 6. Houston Rockets
+    Jugadors: K. Durant - J. Okogie - A. Sengun - J. Smith Jr. - A. Thompson
+    Minuts: 376.8
+    Net Rating: +0.0
+    Partits: 41
+
+ 7. Denver Nuggets
+    Jugadors: A. Gordon - N. Jokić - J. Murray - C. Johnson - C. Braun
+    Minuts: 359.5
+    Net Rating: +0.0
+    Partits: 23
+
+ 8. Toronto Raptors
+    Jugadors: B. Ingram - J. Poeltl - R. Barrett - I. Quickley - S. Barnes
+    Minuts: 353.7
+    Net Rating: +0.0
+    Partits: 28
+
+ 9. Brooklyn Nets
+    Jugadors: M. Porter Jr. - T. Mann - N. Claxton - N. Clowney - E. Dëmin
+    Minuts: 307.0
+    Net Rating: +0.0
+    Partits: 19
+
+10. Houston Rockets
+    Jugadors: K. Durant - A. Sengun - J. Smith Jr. - T. Eason - A. Thompson
+    Minuts: 306.0
+    Net Rating: +0.0
+    Partits: 36
+
