@@ -1776,7 +1776,7 @@ def main():
             options=["✅ Activat", "❌ Desactivat"],
             index=0,
             label_visibility="collapsed",
-            help="Els equips locals guanyen ~58% dels partits NBA"
+            help="Els equips locals guanyen ~60% dels partits NBA. L'avantatge s'aplica dins de la matriu de transició (factor multiplicatiu +2% eficiència + 0.5% pace)"
         )
         
         home_court_advantage = (home_court_status == "✅ Activat")
@@ -1787,9 +1787,9 @@ def main():
                 "Punts d'avantatge",
                 min_value=0.0,
                 max_value=6.0,
-                value=3.0,
+                value=2.8,
                 step=0.5,
-                help="Típicament entre 2-4 punts",
+                help="Calibratge típic NBA: 2-3 punts. S'aplica internament com a factor multiplicatiu",
                 format="%.1f"
             )
             
@@ -1800,7 +1800,7 @@ def main():
                 <div style='font-size: 1.3rem; font-weight: 700; margin-top: 0.2rem;'>
                     +{home_advantage_points:.1f} punts
                 </div>
-                <div style='font-size: 0.75rem; opacity: 0.8;'>per l'equip local</div>
+                <div style='font-size: 0.75rem; opacity: 0.8;'>per l'equip local (dins matriu)</div>
             </div>
             """, unsafe_allow_html=True)
         else:
@@ -2110,19 +2110,38 @@ def main():
                         team_a_rotation = load_team_rotation(team_a, max_lineups=20)
                         team_b_rotation = load_team_rotation(team_b, max_lineups=20)
                         
-                        # Monte Carlo amb home court advantage
-                        predictor = MonteCarloGamePredictor(team_a_rotation, team_b_rotation)
+                        # NOU: Configurar Monte Carlo amb HCA integrat dins la matriu
+                        # L'avantatge ja no se suma a posteriori, sinó que afecta directament
+                        # les probabilitats d'encert del quintet local via home_court_factor
+                        # i el seu pace lleugerament incrementat.
+                        if home_court_advantage:
+                            predictor = MonteCarloGamePredictor(
+                                team_a_rotation, 
+                                team_b_rotation,
+                                home_team='a',  # team_a és el local
+                                home_court_pts=home_advantage_points  # Calibratge HCA
+                            )
+                        else:
+                            # Sense avantatge: equips neutres (cap dels dos és local)
+                            predictor = MonteCarloGamePredictor(
+                                team_a_rotation, 
+                                team_b_rotation,
+                                home_team=None,
+                                home_court_pts=0.0
+                            )
+                        
                         stats = predictor.run_monte_carlo(
                             n_simulations=n_simulations, 
-                            verbose=False,
-                            home_advantage=home_advantage_points  # Passar avantatge local!
+                            verbose=False
+                            # home_advantage ja no es passa aquí (és OBSOLET)
+                            # L'avantatge està integrat dins la matriu de transició
                         )
                         
                         st.session_state.mc_stats = stats
                         
                         # Mostrar missatge amb detalls
                         msg = f"✅ {n_simulations} simulacions completades!"
-                        if home_advantage_points > 0:
+                        if home_court_advantage:
                             msg += f" (Home Court: +{home_advantage_points:.1f} pts per {team_a})"
                         st.success(msg)
                         
@@ -2269,14 +2288,16 @@ def main():
         stats = st.session_state.mc_stats
         
         # Banner home court advantage - MONOCROMÀTIC
-        if stats.get('home_advantage', 0) > 0:
+        # NOU: el HCA està ara integrat dins la matriu de transició
+        if stats.get('home_advantage', 0) > 0 or stats.get('home_court_pts', 0) > 0:
+            hca_value = stats.get('home_court_pts', stats.get('home_advantage', 0))
             st.markdown(f"""
             <div style='background: #17408B; padding: 1rem 1.5rem; border-radius: 12px; color: white; margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15);'>
                 <div style='display: flex; align-items: center; gap: 1rem;'>
                     <span style='font-size: 2rem;'>🏠</span>
                     <div>
                         <div style='font-weight: 700; font-size: 1.1rem;'>Home Court Advantage Activat</div>
-                        <div style='opacity: 0.9; font-size: 0.9rem;'>+{stats['home_advantage']:.1f} punts addicionals per {stats['team_a']}</div>
+                        <div style='opacity: 0.9; font-size: 0.9rem;'>~+{hca_value:.1f} punts efectius per {stats['team_a']} (integrat dins la matriu Markov)</div>
                     </div>
                 </div>
             </div>
@@ -2948,11 +2969,41 @@ def main():
                                 # Explicació de la matriu
                                 st.markdown("---")
                                 
+                                # DIAGRAMA DE FLUX D'ESTATS
+                                st.subheader("🔄 Diagrama de Flux d'Estats")
                                 
                                 st.markdown("""
-
+                                ```
+                                ┌─────────────────────────────────────────────────────────────────────┐
+                                │                         INICI DE POSSESSIÓ                          │
+                                │                              ⬇️                                      │
+                                │                           [START]                                   │
+                                │                              │                                      │
+                                │         ┌────────────────────┼────────────────────┐                │
+                                │         │                    │                    │                │
+                                │         ▼                    ▼                    ▼                │
+                                │    ZONES DE TIR          PÈRDUES            ALTRES                 │
+                                │    -----------          -------            ------                 │
+                                │    • Corner 3           • TOV              • Steal (rival)        │
+                                │    • Above Break 3      • Deflection       • Foul                 │
+                                │    • Mid-Range                                                    │
+                                │    • Long Mid                                                     │
+                                │    • Paint                                                        │
+                                │    • Layup                                                        │
+                                │    • Dunk                                                         │
+                                │         │                    │                    │                │
+                                │         ▼                    ▼                    ▼                │
+                                │    RESULTATS            [END]              FT o [END]              │
+                                │    --------                                                        │
+                                │    • Converteix → [END] ✅ (2 o 3 punts)                          │
+                                │    • Falla → DREB → [END] ❌ (0 punts, rival té pilota)           │
+                                │    • Falla → OREB → [START] 🔄 (segona oportunitat)               │
+                                │    • Block → OREB/DREB                                            │
+                                │    • Foul → [FT] → [END]                                          │
+                                └─────────────────────────────────────────────────────────────────────┘
+                                ```
                                 
-                                **Camins més comuns:**
+                                **🎯 Camins més comuns:**
                                 
                                 1. **TIR CONVERTIT** (el millor):
                                    ```
