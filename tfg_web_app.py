@@ -2969,41 +2969,9 @@ def main():
                                 # Explicació de la matriu
                                 st.markdown("---")
                                 
-                                # DIAGRAMA DE FLUX D'ESTATS
-                                st.subheader("🔄 Diagrama de Flux d'Estats")
-                                
                                 st.markdown("""
-                                ```
-                                ┌─────────────────────────────────────────────────────────────────────┐
-                                │                         INICI DE POSSESSIÓ                          │
-                                │                              ⬇️                                      │
-                                │                           [START]                                   │
-                                │                              │                                      │
-                                │         ┌────────────────────┼────────────────────┐                │
-                                │         │                    │                    │                │
-                                │         ▼                    ▼                    ▼                │
-                                │    ZONES DE TIR          PÈRDUES            ALTRES                 │
-                                │    -----------          -------            ------                 │
-                                │    • Corner 3           • TOV              • Steal (rival)        │
-                                │    • Above Break 3      • Deflection       • Foul                 │
-                                │    • Mid-Range                                                    │
-                                │    • Long Mid                                                     │
-                                │    • Paint                                                        │
-                                │    • Layup                                                        │
-                                │    • Dunk                                                         │
-                                │         │                    │                    │                │
-                                │         ▼                    ▼                    ▼                │
-                                │    RESULTATS            [END]              FT o [END]              │
-                                │    --------                                                        │
-                                │    • Converteix → [END] ✅ (2 o 3 punts)                          │
-                                │    • Falla → DREB → [END] ❌ (0 punts, rival té pilota)           │
-                                │    • Falla → OREB → [START] 🔄 (segona oportunitat)               │
-                                │    • Block → OREB/DREB                                            │
-                                │    • Foul → [FT] → [END]                                          │
-                                └─────────────────────────────────────────────────────────────────────┘
-                                ```
                                 
-                                **🎯 Camins més comuns:**
+                                **Camins més comuns:**
                                 
                                 1. **TIR CONVERTIT** (el millor):
                                    ```
