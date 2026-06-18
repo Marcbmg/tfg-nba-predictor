@@ -2430,7 +2430,6 @@ def main():
         
         with col2:
             st.plotly_chart(plot_total_points(stats), use_container_width=True)
-            st.plotly_chart(plot_possessions(stats), use_container_width=True)
         
         # GRÀFICS AVANÇATS - FILA 2 (NOVES VISUALITZACIONS)
         st.markdown("<br>", unsafe_allow_html=True)
