@@ -1,0 +1,52 @@
+[
+  {
+    "player_id": 1630173,
+    "player_name": "Precious Achiuwa",
+    "error": "AdvancedNBADataScraper.get_defensive_stats() takes 1 positional argument but 3 were given"
+  },
+  {
+    "player_id": 1628389,
+    "player_name": "Bam Adebayo",
+    "error": "AdvancedNBADataScraper.get_defensive_stats() takes 1 positional argument but 3 were given"
+  },
+  {
+    "player_id": 1630534,
+    "player_name": "Ochai Agbaji",
+    "error": "AdvancedNBADataScraper.get_defensive_stats() takes 1 positional argument but 3 were given"
+  },
+  {
+    "player_id": 1630583,
+    "player_name": "Santi Aldama",
+    "error": "AdvancedNBADataScraper.get_defensive_stats() takes 1 positional argument but 3 were given"
+  },
+  {
+    "player_id": 1629638,
+    "player_name": "Nickeil Alexander-Walker",
+    "error": "AdvancedNBADataScraper.get_defensive_stats() takes 1 positional argument but 3 were given"
+  },
+  {
+    "player_id": 1628960,
+    "player_name": "Grayson Allen",
+    "error": "AdvancedNBADataScraper.get_defensive_stats() takes 1 positional argument but 3 were given"
+  },
+  {
+    "player_id": 1628386,
+    "player_name": "Jarrett Allen",
+    "error": "AdvancedNBADataScraper.get_defensive_stats() takes 1 positional argument but 3 were given"
+  },
+  {
+    "player_id": 203937,
+    "player_name": "Kyle Anderson",
+    "error": "AdvancedNBADataScraper.get_defensive_stats() takes 1 positional argument but 3 were given"
+  },
+  {
+    "player_id": 203507,
+    "player_name": "Giannis Antetokounmpo",
+    "error": "AdvancedNBADataScraper.get_defensive_stats() takes 1 positional argument but 3 were given"
+  },
+  {
+    "player_id": 1630175,
+    "player_name": "Cole Anthony",
+    "error": "AdvancedNBADataScraper.get_defensive_stats() takes 1 positional argument but 3 were given"
+  }
+]
